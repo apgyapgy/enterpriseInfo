@@ -6,12 +6,16 @@ import router from './router'
 
 import VueWechatTitle from 'vue-wechat-title'
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 import './assets/css/common.css'
 
 Vue.config.productionTip = false
 
 
 Vue.use(VueWechatTitle)
+Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

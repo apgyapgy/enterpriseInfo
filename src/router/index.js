@@ -5,7 +5,7 @@ import Detail from '@/components/Detail/Detail'
 import Index from '@/components/Index/Index'
 import List from '@/components/List/List'
 import Login from '@/components/Login/Login'
-import Registry from '@/components/Registry/Registry'
+import Register from '@/components/Register/Register'
 
 Vue.use(Router)
 
@@ -38,12 +38,12 @@ export default new Router({
       },
       component: Login
     },{
-      path: '/registry',
-      name: 'Registry',
+      path: '/register',
+      name: 'Register',
       meta:{
       	title:'注册'
       },
-      component: Registry
+      component: Register
     }
   ]
 })

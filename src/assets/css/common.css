@@ -5,6 +5,7 @@ html,body,div,span,p,ul,li,img,input{
 html,body{
   width:100%;
   height:100%;
+  background:#f6f6f6;
 }
 #body{
   width:100%;
@@ -18,6 +19,9 @@ input[type="text"],textarea{
 }
 a,input{
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+li{
+  list-style:none;
 }
 input,textarea,button{
   outline:none;
@@ -35,4 +39,140 @@ button{
   visibility:hidden;
   width:0;
   height:0;
+}
+
+/*搜索框*/
+
+.content{
+  position:relative;
+  padding:60px 0;
+  width:100%;
+  background:rgb(0,79,190);  
+}
+.content_logo{
+  display:block;
+  margin:0 auto 20px;
+  width:100px;
+  height:100px;
+}
+.search .input_wrapper{
+  display:flex;
+  margin:20px auto 0;
+  width:800px;
+  height:50px;
+}
+.search .input_wrapper input{
+  flex:1;
+  padding: 10px 16px;
+  box-sizing:border-box;
+  height: 51px;
+  font-size: 16px;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 0px;
+  border: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+}
+.search .input_wrapper span{
+  padding: 0 25px;
+  box-sizing:border-box;
+  width:110px;
+  height: 51px;
+  line-height:51px;
+  font-size: 20px;
+  color: #fff;
+  background:#616DFF;
+  border: none;
+  border-radius:0 4px 4px 0;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
+}
+.search .input_wrapper span:hover{
+  background:#4D59E8;
+}
+.navs{
+  display:block;
+  margin:0 auto;
+}
+.navs li{
+  display:inline-block;
+  margin:0 15px;
+  padding:5px 8px;
+  font-size:16px;
+  color:#fff;
+}
+.navs li:hover,.navs li.active{
+  background-color: #fff;
+  color: #5a5a5a;
+  position: relative;
+  border-radius:4px;
+  cursor:pointer;
+}
+.navs li:hover::before,.navs li.active::before{
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  margin-left: -6px;
+  content: " ";
+  width: 0;
+  height: 0;
+  border:6px solid transparent;
+  border-top-color:#fff;
+}
+.header{
+  position:fixed;
+  left:0;
+  top:0;
+  padding-left:60px;
+  padding-right:60px;
+  box-sizing:border-box;
+  width:100%;
+  height:56px;
+  line-height:56px;
+  font-size:14px;
+  background:#fff;
+  z-index:10;
+}
+.header .logo{
+  margin-top:8px;
+  width:40px;
+  height:40px;
+  float:left;
+}
+.header .nav{
+  float:right;
+  height:56px;
+}
+.header .nav_before{
+  float:left;
+  height:56px;
+}
+.header .nav li,
+.header .nav_before li{
+  position:relative;
+  float:left;
+  padding:0 15px;
+  height:56px;
+  line-height:56px;
+  font-size:14px;
+}
+.header .nav li:hover,
+.header .nav_before li:hover{
+  color:#128bed;
+  cursor:pointer;
+}
+.header .nav li.border_right::after{
+  position:absolute;
+  right:0;
+  top:18px;
+  content:'';
+  width:1px;
+  height:20px;
+  background:#efefef;
+}
+.padding_56{
+  width:100%;
+  height:56px;
 }
