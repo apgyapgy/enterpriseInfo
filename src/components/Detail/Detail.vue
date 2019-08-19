@@ -1,17 +1,6 @@
 <template>
 	<div class="container clearfix">
-		<div class="header">
-			<img class="logo" src="/static/images/logo.png" alt="">
-			<ul class="nav_before">
-				<li v-for="(item,idx) in headerNav" @click="changeHeaderNav(idx)"
-					:class="{'active':activeHeaderNav==idx}">{{item}}</li>
-			</ul>
-			<ul class="nav">
-				<li @click="toLogin" class="border_right">登录</li>
-				<li @click="toRegister">注册</li>
-			</ul>
-		</div>
-		<div class="padding_56"></div>
+		<Header/>
 		<div class="detail_content clearfix">
 			<div class="left">
 				<div class="company_header">
@@ -510,12 +499,10 @@
 </template>
 <script>
 	import Footer from '@/components/Template/footer.vue'
+	import Header from '@/components/Template/header.vue'
 	export default{
 		data(){
 			return{
-				headerNav:['aaa','bbb','ccc'],
-				activeHeaderNav:0,
-				
 				tabs:['基本信息','电子商务','相关企业','招聘','网络推广','新闻舆情','知识产权','招标投标'],
 				activeTab:0,
 				pageSize:10,
@@ -645,20 +632,11 @@
 			extensionTypeChange(val){//推广类型下拉列表框改变
 			},
 			extensionChange(val){//推广平台下拉互敬互爱框改变
-			},
-			toLogin(){
-				this.$router.push('/login');
-			},
-			toRegister(){
-				this.$router.push('/register');
-			},
-			changeHeaderNav(idx){
-				this.activeHeaderNav = idx;
-				//后续操作可以写在下面
 			}
 		},
 		components:{
-			Footer
+			Footer,
+			Header
 		}
 	}
 </script>
@@ -914,7 +892,7 @@
 		box-sizing:border-box;
 		display:block;
 		margin:20px auto 0;
-		width:100%;
+		width:1250px;
 	}
 	.company_header{
 		margin:0 auto;

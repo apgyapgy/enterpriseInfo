@@ -1,17 +1,6 @@
 <template>
 	<div class="container clearfix">
-		<div class="header">
-			<img class="logo" src="/static/images/logo.png" alt="">
-			<ul class="nav_before">
-				<li v-for="(item,idx) in headerNav" @click="changeHeaderNav(idx)"
-					:class="{'active':activeHeaderNav==idx}">{{item}}</li>
-			</ul>
-			<ul class="nav">
-				<li @click="toLogin" class="border_right">登录</li>
-				<li @click="toRegister">注册</li>
-			</ul>
-		</div>
-		<div class="padding_56"></div>
+		<Header/>
 		<div class="content">
 			<div class="search">
 				<ul class="navs clearfix">
@@ -19,12 +8,13 @@
 						@click="changeNav(idx)">{{item}}</li>
 				</ul>
 				<div class="input_wrapper">
-					<input v-model="searchInfo.searchText" type="text" placeholder="请输入搜索关键词">
+					<input v-model="searchInfo.searchText" type="text" placeholder="请输入搜索关键词" @keyup.enter="toSearch">
 					<span @click="toSearch">搜索</span>
 				</div>
 			</div>
 		</div>
 		<span class="senior_title" @click="showSenior">高级筛选</span>
+		<!-- 高级筛选内容 -->
 		<div v-show="showSeniorFlag" class="filter_wrapper clearfix">
 			<!-- 所在地区 -->
 			<div class="filter">
@@ -198,6 +188,7 @@
 			</div>
 			<div @click="hideSenior" class="close"></div>
 		</div>
+		<!-- 搜索的数据 -->
 		<div class="search_list">
 			<div class="title clearfix">
 				<span class="search_list_total">共搜索到{{total}}条记录</span>
@@ -255,12 +246,10 @@
 </template>
 <script>
 	import Footer from '@/components/Template/footer.vue'
+	import Header from '@/components/Template/header.vue'
 	export default{
 		data(){
 			return{
-				headerNav:['aaa','bbb','ccc'],
-				activeHeaderNav:0,
-
 				searchInfo:{
 					page:1,
 					activeNav:0,
@@ -293,7 +282,6 @@
 				searchFrom:'',//搜索的企业来源
 				seniorArr:[],//高级筛选内容
 				showSeniorFlag:false,//是否显示高级筛选
-
 				
 				total:2,
 				pageSize:10,
@@ -746,16 +734,9 @@
 			toLogin(){
 				this.$router.push('/login');
 			},
-			toRegister(){
-				this.$router.push('/register');
-			},
-			changeHeaderNav(idx){
-				this.activeHeaderNav = idx;
-				//后续操作可以写在下面
-			}
 		},
 		components:{
-			Footer
+			Footer,Header
 		}
 	}
 </script>
@@ -933,8 +914,9 @@
 		}
 	}
 	.container{
+		display:inline-block;
 		width:100%;
-		height:100%;
+		min-height:100%;
 		background:#fff;
 	}
 

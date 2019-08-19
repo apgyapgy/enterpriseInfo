@@ -1,17 +1,6 @@
 <template>
 	<div class="container_index">
-		<div class="header">
-			<img class="logo" src="/static/images/logo.png" alt="">
-			<ul class="nav_before">
-				<li v-for="(item,idx) in headerNav" @click="changeHeaderNav(idx)"
-					:class="{'active':activeHeaderNav==idx}">{{item}}</li>
-			</ul>
-			<ul class="nav">
-				<li @click="toLogin" class="border_right">登录</li>
-				<li @click="toRegister">注册</li>
-			</ul>
-		</div>
-		<div class="padding_56"></div>
+		<Header/>
 		<div class="content">
 			<img class="content_logo" src="../../assets/logo.png" alt="">
 			<div class="search">
@@ -20,7 +9,7 @@
 						@click="changeNav(idx)">{{item}}</li>
 				</ul>
 				<div class="input_wrapper">
-					<input v-model="searchText" type="text" placeholder="请输入搜索关键词">
+					<input v-model="searchText" type="text" placeholder="请输入搜索关键词" @keyup.enter="toSearch">
 					<span @click="toSearch">搜索</span>
 				</div>
 			</div>
@@ -39,13 +28,12 @@
 </template>
 <script>
 	import Footer from '@/components/Template/footer.vue'
+	import Header from '@/components/Template/header.vue'
 	export default{
 		data(){
 			return{
 				navArr:['全部','企业名称','招聘职位','产品','经营范围'],
 				activeNav:0,
-				headerNav:['aaa','bbb','ccc'],
-				activeHeaderNav:0,
 				searchText:'',//搜索框内容
 				introArr:[
 					{
@@ -88,19 +76,10 @@
 					query:query
 				});
 			},
-			toLogin(){
-				this.$router.push('/login');
-			},
-			toRegister(){
-				this.$router.push('/register');
-			},
-			changeHeaderNav(idx){
-				this.activeHeaderNav = idx;
-				//后续操作可以写在下面
-			}
 		},
 		components:{
-			Footer
+			Footer,
+			Header
 		}
 	}
 </script>
@@ -115,7 +94,7 @@
 		.desc_item{
 			padding:10px;
 			float:left;
-			width:330px;
+			width:430px;
 			height:220px;
 			.desc_item_right{
 				float:left;
@@ -134,6 +113,10 @@
 					line-height:24px;
 					font-size:16px;
 					color:#3B426B;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 4;
+					overflow: hidden;
 				}
 			}
 			img{

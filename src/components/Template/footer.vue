@@ -163,6 +163,7 @@
 	    .footer-container{
 		    padding-right: 15px;
 		    padding-left: 15px;
+		    box-sizing:border-box;
 		    margin-right: auto;
 		    margin-left: auto;
 	    	width:1250px;
